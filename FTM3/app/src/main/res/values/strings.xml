@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">流浪图书</string>
+
+    <string name="title_section1">首页</string>
+    <string name="title_section2">问题库</string>
+    <string name="title_section3">我要提问</string>
+    <string name="title_section4">我的测试</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="upload">发表</string>
+    <string name="I_want_ask_question">提问</string>
+    <string name="cancle">取消</string>
+    <string name="qusetion">问题</string>
+    <string name="describe">描述</string>
+</resources>
