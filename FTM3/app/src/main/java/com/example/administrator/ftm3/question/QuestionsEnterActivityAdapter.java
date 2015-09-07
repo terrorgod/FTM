@@ -2,6 +2,7 @@ package com.example.administrator.ftm3.question;
 
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,10 +19,10 @@ import java.util.ArrayList;
  */
 public class QuestionsEnterActivityAdapter extends BaseAdapter {
 
-    private ArrayList<String> list;
+    private ArrayList<RespondAndStudentID> list;
     private Context context;
 
-    public QuestionsEnterActivityAdapter(Context context, ArrayList<String> list) {
+    public QuestionsEnterActivityAdapter(Context context, ArrayList<RespondAndStudentID> list) {
         this.list = list;
         this.context = context;
     }
@@ -55,29 +56,24 @@ public class QuestionsEnterActivityAdapter extends BaseAdapter {
                     .findViewById(R.id.tv_activity_name);
             holder.tv_activity_content = (TextView) convertView
                     .findViewById(R.id.tv_activity_content);
-            holder.ll_activity_listview = (LinearLayout) convertView
-                    .findViewById(R.id.ll_activity_listview);
+            holder.tv_activity_time = (TextView) convertView
+                    .findViewById(R.id.tv_activity_time);
 
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        //改变数据 参数类型：ArrayList<String>
-        holder.tv_activity_name.setText(list.get(position).toString());
-        holder.tv_activity_content.setText(list.get(position).toString());
-        holder.ll_activity_listview.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-
-            }
-        });
+        //改变数据 参数类型：ArrayList<RespondAndStudentID>
+        holder.tv_activity_name.setText(list.get(position).getStudentID());
+        holder.tv_activity_content.setText(list.get(position).getRespond());
+        holder.tv_activity_time.setText(list.get(position).getDate());
         return convertView;
     }
 
     class ViewHolder {
         TextView tv_activity_name;
         TextView tv_activity_content;
-        LinearLayout ll_activity_listview;
+        TextView tv_activity_time;
     }
 
     //弹框提示

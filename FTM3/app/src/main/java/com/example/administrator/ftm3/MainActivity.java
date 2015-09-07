@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity
         // update the main content by replacing fragments
         //将activity_main布局中R.id.container部分用新的fragment实体替换掉
 
-        Log.e("MY", "position"+position);
+        Log.e("MY", "当前点击抽屉的位置是第"+position+"个");
         //此处修改抽屉fragment
         FragmentManager fragmentManager = getSupportFragmentManager();
         switch(position){
@@ -76,11 +76,12 @@ public class MainActivity extends AppCompatActivity
             case 2:
                 //跳转至提问界面
                 Intent intent = new Intent(this,AskAcitivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, 1);
                 break;
         }
 
     }
+
 
     public void onSectionAttached(int number) {
         switch (number) {

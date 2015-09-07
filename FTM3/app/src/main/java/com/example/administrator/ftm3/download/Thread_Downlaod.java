@@ -8,6 +8,7 @@ import java.io.File;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+
 /**
  * Created by Administrator on 2015/8/9 0009.
  */
@@ -31,7 +32,7 @@ public class Thread_Downlaod {
                     conn.setReadTimeout(3000);
                     conn.setConnectTimeout(3000);
 
-                    Log.e("MY", "connect");
+                    Log.e("MY", "连接APK服务器发出请求");
                     if (conn.getResponseCode() == 200) {
                         long length = conn.getContentLength();
                         long size = length / threadNum;
@@ -43,7 +44,7 @@ public class Thread_Downlaod {
                                 endIndex = length - 1;
                             }
 
-                            Log.e("MY", "子线程下载");
+                            Log.e("MY", "开始用子线程下载APK");
                             new Mythread(startIndex, endIndex, path).start();
                         }
                     }
@@ -73,8 +74,7 @@ public class Thread_Downlaod {
                            conn.setReadTimeout(3000);
                            conn.setConnectTimeout(3000);
 
-                           Log.e("MY", "path:"+path);
-                           Log.e("MY", "connect");
+                           Log.e("MY", "连接APK服务器发出请求");
                            if (conn.getResponseCode() == 200) {
                                int length = conn.getContentLength();
 
@@ -90,7 +90,7 @@ public class Thread_Downlaod {
                                        endIndex = length - 1;
                                    }
 
-                                   Log.e("MY", "子线程下载");
+                                   Log.e("MY", "开始用子线程下载APK");
                                    new Mythread(startIndex, endIndex, path, progressDialog,file).start();
                                }
                            }

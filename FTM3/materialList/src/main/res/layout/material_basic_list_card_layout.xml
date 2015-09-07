@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.dexafree.materialList.card.CardLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.dexafree.materialList.card.CardLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/MainLayout">
 
     <android.support.v7.widget.CardView
@@ -10,16 +10,15 @@
         style="@style/MainCardView"
         >
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/titleTextView"
-                android:layout_alignTop="@+id/imageView"
-                android:layout_toRightOf="@+id/imageView"
                 android:paddingTop="16dp"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
@@ -28,30 +27,28 @@
                 android:textColor="@color/black_button"
                 tools:text="El Pooch"/>
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/description_color"
-                android:textSize="@dimen/description_size"
-                android:layout_below="@+id/titleTextView"
-                android:layout_alignLeft="@+id/titleTextView"
-                android:id="@+id/descriptionTextView"
-                android:paddingLeft="@dimen/big_padding"
-                android:paddingBottom="@dimen/big_padding"
-                android:paddingRight="@dimen/big_padding"
-                tools:text="By Alex Nelson"/>
+
 
             <ListView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/listView"
-                android:layout_below="@+id/descriptionTextView"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
                 android:layout_marginBottom="8dp" />
 
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/description_color"
+                android:textSize="@dimen/description_size"
+                android:id="@+id/descriptionTextView"
+                android:visibility="gone"
+                android:paddingLeft="@dimen/big_padding"
+                android:paddingBottom="@dimen/big_padding"
+                android:paddingRight="@dimen/big_padding"
+                tools:text="By Alex Nelson"/>
 
-        </RelativeLayout>
+        </LinearLayout>
+
 
     </android.support.v7.widget.CardView>
 

@@ -85,6 +85,7 @@ public class BasicListCardProvider extends TextCardProvider<BasicListCardProvide
         return this;
     }
 
+
     @Override
     public int getLayout() {
         return R.layout.material_basic_list_card_layout;
@@ -93,8 +94,9 @@ public class BasicListCardProvider extends TextCardProvider<BasicListCardProvide
     @Override
     public void render(@NonNull final View view, @NonNull final Card card) {
         super.render(view, card);
+
         if (getAdapter() != null) {
-            final ListView listView = (ListView) view.findViewById(R.id.listView);
+             final ListView listView = (ListView) view.findViewById(R.id.listView);
             if (!isDividerVisible()) {
                 listView.setDivider(new ColorDrawable(Color.TRANSPARENT));
             }
@@ -110,6 +112,7 @@ public class BasicListCardProvider extends TextCardProvider<BasicListCardProvide
             calculateListHeight(listView);
         }
     }
+
 
     private void calculateListHeight(ListView listView) {
         final ListAdapter adapter = listView.getAdapter();

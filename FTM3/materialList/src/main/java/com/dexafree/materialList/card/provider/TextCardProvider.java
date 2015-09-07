@@ -39,6 +39,7 @@ public abstract class TextCardProvider<T extends TextCardProvider> extends CardP
         setDescriptionResourceColor(R.color.description_color);
     }
 
+
     /**
      * Get the title.
      *
@@ -47,6 +48,7 @@ public abstract class TextCardProvider<T extends TextCardProvider> extends CardP
     public String getTitle() {
         return mTitle;
     }
+
 
     /**
      * Set the title with a string resource.
@@ -58,6 +60,9 @@ public abstract class TextCardProvider<T extends TextCardProvider> extends CardP
     public T setTitle(@StringRes final int title) {
         return setTitle(getContext().getString(title));
     }
+
+
+
 
     /**
      * Set the title.
@@ -261,6 +266,11 @@ public abstract class TextCardProvider<T extends TextCardProvider> extends CardP
         TextView title = (TextView) view.findViewById(R.id.titleTextView);
         title.setText(getTitle());
         title.setTextColor(getTitleColor());
+
+        //time
+        //TextView date= (TextView) view.findViewById(R.id.date);
+        //date.setText(getDate());
+        //date.setTextColor(getTitleColor());
 
         // Description
         TextView description = (TextView) view.findViewById(R.id.descriptionTextView);

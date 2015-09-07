@@ -7,21 +7,29 @@
     android:orientation="vertical">
 
 
-    <com.andexert.library.RippleView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        ripple:rv_type="doubleRipple">
-        <LinearLayout
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
             android:background="#000000"
             android:minHeight="?attr/actionBarSize"
             >
+                <TextView
+                    android:onClick="Respond"
+                    android:textColor="@drawable/text_selector"
+                    android:text="我要回答"
+                    android:textSize="18sp"
+                    android:clickable="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="15dp"
 
-        </LinearLayout>
-    </com.andexert.library.RippleView>
+                    android:layout_centerVertical="true"
+                />
+
+        </RelativeLayout>
+
 
 
     <com.andexert.library.RippleView
@@ -29,18 +37,28 @@
         android:layout_height="wrap_content"
         ripple:rv_type="doubleRipple">
         <TextView
+            android:id="@+id/tv_activity_question"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
+            android:minHeight="100dp"
             android:background="@drawable/listview_selector"
             android:gravity="center"
-            android:text="请问这个问题问的怎么样？"/>
+            android:padding="16dp"
+            android:text="请问这个问题问的怎么样？"
+            android:textSize="18sp"/>
     </com.andexert.library.RippleView>
 
 
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_activity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
     <com.dexafree.materialList.view.MaterialListView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/material_listview"
         app:column_count_portrait="1"
         app:column_count_landscape="1"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
 </LinearLayout>

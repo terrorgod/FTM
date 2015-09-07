@@ -64,7 +64,7 @@ public class Mythread extends Thread{
                     //设置进度条当前值
                     progressDialog.setProgress(current);
                 }
-                Log.e("MY", "本次下载了："+total);
+                Log.e("MY", "本次APK下载了："+total);
                 raf.close();
             }
         } catch (Exception e) {

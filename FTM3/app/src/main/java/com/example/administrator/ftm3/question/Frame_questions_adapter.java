@@ -16,10 +16,10 @@ import com.example.administrator.ftm3.R;
 import java.util.ArrayList;
 
 public class Frame_questions_adapter extends BaseAdapter {
-   private ArrayList<String> list;
+   private ArrayList<QuestionAndDescribe> list;
    private Context context;
 
-   public Frame_questions_adapter(Context context, ArrayList<String> list) {
+   public Frame_questions_adapter(Context context, ArrayList<QuestionAndDescribe> list) {
        this.list = list;
        this.context = context;
    }
@@ -49,38 +49,40 @@ public class Frame_questions_adapter extends BaseAdapter {
        if (convertView == null) {
            convertView = LayoutInflater.from(context).inflate(R.layout.fragment_listview,
                    null);
-           holder.tv_name = (TextView) convertView
-                   .findViewById(R.id.tv_name);
-           holder.tv_content = (TextView) convertView
-                   .findViewById(R.id.tv_content);
-           holder.iv_delete = (ImageView) convertView
-                   .findViewById(R.id.iv_delete);
+           holder.tv_fragment_question = (TextView) convertView
+                   .findViewById(R.id.tv_fragment_question);
+           holder.tv_fragment_content = (TextView) convertView
+                   .findViewById(R.id.tv_fragment_content);
+           holder.tv_fragment_time = (TextView) convertView
+                   .findViewById(R.id.tv_fragment_time);
 
            convertView.setTag(holder);
        } else {
            holder = (ViewHolder) convertView.getTag();
        }
-       //改变数据 参数类型：ArrayList<String>
-       holder.tv_name.setText(list.get(position).toString());
-       holder.tv_content.setText(list.get(position).toString());
-       holder.iv_delete.setOnClickListener(new View.OnClickListener() {
+       //改变数据 参数类型：ArrayList<QuestionAndDescribe>
+       QuestionAndDescribe qad = list.get(position);
+       holder.tv_fragment_question.setText(qad.getQuestion());
+       holder.tv_fragment_content.setText(qad.getDescribe());
+       holder.tv_fragment_time.setText(qad.getDate());
+      /* holder.iv_delete.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               //弹框提示
+               //删除弹框提示
                Pop_up(position);
            }
-       });
+       });*/
 
        return convertView;
    }
 
    class ViewHolder {
-       TextView tv_name;
-       TextView tv_content;
-       ImageView iv_delete;
+       TextView tv_fragment_question;
+       TextView tv_fragment_content;
+       TextView tv_fragment_time;
    }
 
-    //弹框提示
+    /*//删除弹框提示
     public void Pop_up(final int position){
         new AlertDialog.Builder(context).setTitle("删除提示")//设置对话框标题
 
@@ -108,5 +110,5 @@ public class Frame_questions_adapter extends BaseAdapter {
             }
 
         }).show();//在按键响应事件中显示此对话框
-    }
+    }*/
 }

@@ -97,11 +97,9 @@ public class activity_Splash extends Activity {
         try {
             PackageInfo packageInfo = packageManager.getPackageInfo(getPackageName(),0);
 
-            int versionCode = packageInfo.versionCode;
             String versionName = packageInfo.versionName;
 
-            Log.e("MY", "GetVersionCode " + versionCode);
-            Log.e("MY", "GetVersionName " + versionName);
+            Log.e("MY", "CurrentGetVersionName " + versionName);
 
             return versionName;
         } catch (PackageManager.NameNotFoundException e) {
@@ -120,10 +118,9 @@ public class activity_Splash extends Activity {
             PackageInfo packageInfo = packageManager.getPackageInfo(getPackageName(),0);
 
             int versionCode = packageInfo.versionCode;
-            String versionName = packageInfo.versionName;
 
-            Log.e("MY", "GetVersionCode " + versionCode);
-            Log.e("MY", "GetVersionName " + versionName);
+
+            Log.e("MY", "CurrentVersionCode " + versionCode);
 
             return versionCode;
         } catch (PackageManager.NameNotFoundException e) {
@@ -153,10 +150,8 @@ public class activity_Splash extends Activity {
                     conn.setConnectTimeout(3000);
                     conn.setReadTimeout(3000);
 
-                    Log.e("MY", "CheckVersion "+"准备连接");
                     if(conn.getResponseCode() == 200) {
 
-                        Log.e("MY", "CheckVersion "+"进入连接");
                         InputStream is = conn.getInputStream();
 
                         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -170,7 +165,7 @@ public class activity_Splash extends Activity {
 
                         String content = baos.toString();
 
-                        Log.e("MY", "CheckVersion "+content);
+                        Log.e("MY", "PHPVersion："+content);
 
                         is.close();
                         baos.close();
@@ -181,7 +176,6 @@ public class activity_Splash extends Activity {
                         //校验版本信息
                         if (GetVersionCode() < mversionCode) {
 
-                            Log.e("MY", "校验弹框");
                             //弹出升级框
                             message.what = Code_Dialog;
                             handler.sendMessage(message);
@@ -193,10 +187,10 @@ public class activity_Splash extends Activity {
                             //保证闪屏页时间为5秒
 
                             if(useTime < 5000){
-                                Log.e("MY", "Time进入");
+                                Log.e("MY", "闪屏页面5秒睡眠开始");
                                 try {
                                     Thread.sleep(5000 - useTime);
-                                    Log.e("MY", "Time结束");
+                                    Log.e("MY", "闪屏页面5秒睡眠结束");
                                 } catch (InterruptedException e) {
                                     e.printStackTrace();
                                 }
@@ -236,17 +230,17 @@ public class activity_Splash extends Activity {
      */
     private void analysis_JSON(String content,Message message){
         try {
-            Log.e("MY", "analysis_JSON 初始化");
+            Log.e("MY", "JSON 解析开始");
             JSONObject json = new JSONObject(content);
 
             mversionName = json.getString("versionName");
             mdescription = json.getString("description");
             mversionCode = json.getInt("versionCode");
             mdownload = json.getString("downloadUrl");
-            Log.e("MY", "analysis_JSON 初始化结束");
+            Log.e("MY", "JSON 解析结束");
         } catch (JSONException e) {
             //JSON异常
-            Log.e("MY", "analysis_JSON 异常");
+            Log.e("MY", "JSON 解析异常");
             message.what =Code_Error_JSON;
             handler.sendMessage(message);
             skipMainActivity();
@@ -267,7 +261,6 @@ public class activity_Splash extends Activity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //下载资源
-                Log.e("MY", "准备下载apk");
                 APKDownload();
             }
         });
@@ -309,7 +302,7 @@ public class activity_Splash extends Activity {
     private void APKDownload(){
 
         //通过进度条弹框显示进度
-        Log.e("MY", "准备进度条弹框");
+        Log.e("MY", "显示进度条弹框");
         progressDialog = new  ProgressDialog(activity_Splash.this);
         progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         progressDialog.setMessage("正在下载更新");
@@ -320,20 +313,23 @@ public class activity_Splash extends Activity {
             public void run() {
 
                 //下载apk
-                Log.e("MY", "准备下载");
+                Log.e("MY", "准备下载更新版本APK文件");
                 File file = Thread_Downlaod.FileDownload(mdownload, 3, progressDialog);
-                Log.e("MY", "下载完毕");
-
+                Log.e("MY","APK文件下载完成");
                 try {
                     //这里下载过快，先让它睡一会
+                    Log.e("MY", "线程睡眠8秒，保证进度条弹框正常进行");
                     sleep(8000);
+                    Log.e("MY", "线程睡眠8秒结束");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 //安装apk
+                Log.e("MY", "准备安装APK");
                 installApk(file);
-                Log.e("MY", "安装完毕");
+                Log.e("MY", "APK安装完毕");
                 //结束进度条
+                Log.e("MY", "进度条弹框结束");
                 progressDialog.dismiss();
 
             }

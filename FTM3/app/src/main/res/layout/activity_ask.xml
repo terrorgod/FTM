@@ -9,6 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         ripple:rv_type="doubleRipple">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -99,11 +100,28 @@
         android:layout_marginTop="0dip"
         android:src="@mipmap/cursor"/>
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/vp_fragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:flipInterval="30"
-        android:persistentDrawingCache="animation" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/et_activity_studentID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入你的学号"
+            android:digits="1234567890"
+            android:maxLength="8"/>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:flipInterval="30"
+            android:persistentDrawingCache="animation" />
+
+
+
+    </LinearLayout>
+
 </LinearLayout>

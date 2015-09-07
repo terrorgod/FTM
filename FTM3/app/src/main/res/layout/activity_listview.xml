@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/listview_selector"
-    android:id="@+id/ll_activity_listview">
+    android:background="@drawable/listview_selector">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,6 +21,8 @@
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:ellipsize="end"
                 android:text="名字"
                 android:textSize="20sp"
                 android:singleLine="true"/>
@@ -30,10 +31,21 @@
 
         </LinearLayout>
 
+       <TextView
+        android:id="@+id/tv_activity_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="时间"
+        android:textSize="20sp"
+        />
+
         <TextView
             android:id="@+id/tv_activity_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:ellipsize="end"
             android:text="内容"
             android:lines="3"
             android:textSize="25sp"/>
